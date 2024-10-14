@@ -1,8 +1,13 @@
+import Login from "./context/login"
+// import Signup from "./context/signup"
+import Global from "./global"
 
 function App() {
   return (
     <>
-      <h1>Teste</h1>
+      <Global />
+      <Login title='Login into your account' />
+      {/* <Signup title='Sign in and start today!' /> */}
     </>
   )
 }
