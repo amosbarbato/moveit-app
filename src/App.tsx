@@ -1,14 +1,28 @@
-// import Login from "./context/login"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Login from "./context/login"
 import Signup from "./context/signup"
 import Global from "./global"
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Global />
-      {/* <Login title='Login into your account' /> */}
-      <Signup title='Sign in and start today!' />
-    </>
+      <Routes>
+        <Route
+          path="/login"
+          element={
+            <Login title='Login into your account' />
+          }
+        />
+
+        <Route
+          path="/signup"
+          element={
+            <Signup title='Sign in and start today!' />
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
