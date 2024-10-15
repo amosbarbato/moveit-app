@@ -10,6 +10,7 @@ import { Button } from "../components/ui/button"
 import { Separator } from "../components/ui/separator"
 import { FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { login } from "../services/api"
 
 type Props = {
   title: string
@@ -24,9 +25,17 @@ const Login = ({ title }: Props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    console.log('Login', { email, password })
+    try {
+      const response = await login(email, password)
+      const userData = response.data
+
+      navigate('/user', { state: { user: userData } })
+      // console.log('Login successful!', { email, password });
+    } catch (error) {
+      console.log('Login failed!')
+    }
   }
 
   return (

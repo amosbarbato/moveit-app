@@ -10,6 +10,7 @@ import { Button } from "../components/ui/button"
 import { Separator } from "../components/ui/separator"
 import { useNavigate } from "react-router-dom"
 import { FormEvent, useState } from "react"
+import { signup } from "../services/api"
 
 type Props = {
   title: string
@@ -26,13 +27,19 @@ const Signup = ({ title }: Props) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if (password !== confirmPassword) {
       alert('As senhas não coincidem')
       return
     }
-    console.log('Signup:', { name, email, password })
+
+    try {
+      const response = await signup(name, email, password)
+      console.log('Signup successful!', { name, email, password })
+    } catch (error) {
+      console.log('Signup failed!')
+    }
   }
 
   return (
