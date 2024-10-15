@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const color = {
   dark: '#555555',
@@ -18,21 +18,19 @@ const Global = createGlobalStyle`
     font-family: "Poppins", sans-serif;
     font-weight: 400;
   }
-  body {
-    background: ${color.main};
-  }
-  .medium {
-    font-weight: 500;
-  }
-  .semibold {
-    font-weight: 600;
-  }
-  .bold {
-    font-weight: 700;
-  }
 
-  .off-label { display: none; }
+  body { background: ${color.main} }
+
+  .medium { font-weight: 500 }
+  .semibold { font-weight: 600 }
+  .bold { font-weight: 700 }
+
+  .off-label { display: none }
   .on-label { display: block }
+
+  .space-in-top { margin-top: 70px }
+
+  main { display: flex }
 `
 
 export default Global

@@ -11,6 +11,7 @@ import { Separator } from "../components/ui/separator"
 import { FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { login } from "../services/api"
+import { Hero } from "../components/main"
 
 type Props = {
   title: string
@@ -39,7 +40,7 @@ const Login = ({ title }: Props) => {
   }
 
   return (
-    <>
+    <main>
       <Aside>
         <Logo />
         <Title className="bold">{title}</Title>
@@ -87,7 +88,9 @@ const Login = ({ title }: Props) => {
           </Button>
         </div>
       </Aside>
-    </>
+
+      <Hero />
+    </main>
   )
 }
 

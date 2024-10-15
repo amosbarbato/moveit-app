@@ -11,6 +11,7 @@ import { Separator } from "../components/ui/separator"
 import { useNavigate } from "react-router-dom"
 import { FormEvent, useState } from "react"
 import { signup } from "../services/api"
+import { Hero } from "../components/main"
 
 type Props = {
   title: string
@@ -43,7 +44,7 @@ const Signup = ({ title }: Props) => {
   }
 
   return (
-    <>
+    <main>
       <Aside>
         <Logo />
         <Title className="bold">{title}</Title>
@@ -109,7 +110,9 @@ const Signup = ({ title }: Props) => {
           </Button>
         </div>
       </Aside>
-    </>
+
+      <Hero />
+    </main>
   )
 }
 
