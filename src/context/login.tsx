@@ -12,6 +12,7 @@ import { FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { login } from "../services/api"
 import { Hero } from "../components/main"
+import { Alert } from "../components/ui/alert"
 
 type Props = {
   title: string
@@ -25,23 +26,42 @@ const Login = ({ title }: Props) => {
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState<string | null>(null)
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    try {
-      const response = await login(email, password)
-      const userData = response.data
 
-      navigate('/user', { state: { user: userData } })
+    if (!email) {
+      setError('Woops, something is wrong, try again later!')
+      return
+    }
+
+    if (!password) {
+      setError('Woops, something is wrong, try again later!')
+      return
+    }
+
+    try {
+      await login(email, password)
+      setSuccess('Login successful!')
+      setError(null)
+      // navigate('/user', { state: { user: userData } })
       // console.log('Login successful!', { email, password });
     } catch (error) {
-      console.log('Login failed!')
+      setError('Login failed! Check your credentials.')
     }
   }
+
+  const handleCloseAlert = () => {
+    setError(null);
+  };
 
   return (
     <main>
       <Aside>
+        {error && <Alert message={error} type="error" onClose={handleCloseAlert} />}
+        {success && <Alert message={success} type="success" onClose={handleCloseAlert} />}
         <Logo />
         <Title className="bold">{title}</Title>
 

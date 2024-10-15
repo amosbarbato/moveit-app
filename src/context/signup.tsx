@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom"
 import { FormEvent, useState } from "react"
 import { signup } from "../services/api"
 import { Hero } from "../components/main"
+import { Alert } from "../components/ui/alert"
 
 type Props = {
   title: string
@@ -27,25 +28,53 @@ const Signup = ({ title }: Props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState<string | null>(null)
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+
+    if (!name) {
+      setError('Woops, something is wrong, try again later!')
+      return
+    }
+
+    if (!email) {
+      setError('Woops, something is wrong, try again later!')
+      return
+    }
+
+    if (!password) {
+      setError('Woops, something is wrong, try again later!')
+      return
+    }
+
     if (password !== confirmPassword) {
-      alert('As senhas não coincidem')
+      setError('Passwords do not match, check your credentials.')
       return
     }
 
     try {
-      const response = await signup(name, email, password)
-      console.log('Signup successful!', { name, email, password })
+      await signup(name, email, password)
+      setSuccess('Signup successful!')
+      setError(null)
+      // console.log('Signup successful!', { name, email, password })
     } catch (error) {
-      console.log('Signup failed!')
+      setError('Signup failed!')
+      // console.log('Signup failed!')
     }
   }
+
+  const handleCloseAlert = () => {
+    setError(null);
+    setSuccess(null)
+  };
 
   return (
     <main>
       <Aside>
+        {error && <Alert message={error} type="error" onClose={handleCloseAlert} />}
+        {success && <Alert message={success} type="success" onClose={handleCloseAlert} />}
         <Logo />
         <Title className="bold">{title}</Title>
 

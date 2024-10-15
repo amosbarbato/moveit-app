@@ -7,7 +7,8 @@ export const color = {
   purple: '#7001FD',
   main: '#eee',
   clean: '#F1F3F6',
-  alert: '#FF5F5F'
+  alert: '#FF5F5F',
+  success: '#2FAF6B'
 }
 
 const Global = createGlobalStyle`
