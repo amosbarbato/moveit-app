@@ -8,6 +8,8 @@ import mail from "../assets/mail.svg"
 import lock from "../assets/lock.svg"
 import { Button } from "../components/ui/button"
 import { Separator } from "../components/ui/separator"
+import { FormEvent, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 type Props = {
   title: string
@@ -18,19 +20,30 @@ const Title = styled.h2`
 `
 
 const Login = ({ title }: Props) => {
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    console.log('Login', { email, password })
+  }
+
   return (
     <>
       <Aside>
         <Logo />
         <Title className="bold">{title}</Title>
 
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Item
             className="on-label"
             type='text'
             label='Email Address'
             placeholder='Enter your email address'
             icon={mail}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Item
             className="on-label"
@@ -38,6 +51,8 @@ const Login = ({ title }: Props) => {
             label='Password'
             placeholder='Enter your Password'
             icon={lock}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </Form>
 
@@ -47,6 +62,7 @@ const Login = ({ title }: Props) => {
             mode="button"
             type="submit"
             variant="fill"
+            onClick={handleSubmit}
           >
             Login Now
           </Button>
@@ -56,6 +72,7 @@ const Login = ({ title }: Props) => {
             mode="button"
             type="button"
             variant="outline"
+            onClick={() => navigate('/signup')}
           >
             Signup Now
           </Button>

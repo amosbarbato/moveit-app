@@ -8,6 +8,8 @@ import mail from "../assets/mail.svg"
 import lock from "../assets/lock.svg"
 import { Button } from "../components/ui/button"
 import { Separator } from "../components/ui/separator"
+import { useNavigate } from "react-router-dom"
+import { FormEvent, useState } from "react"
 
 type Props = {
   title: string
@@ -18,19 +20,36 @@ const Title = styled.h2`
 `
 
 const Signup = ({ title }: Props) => {
+  const navigate = useNavigate()
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    if (password !== confirmPassword) {
+      alert('As senhas não coincidem')
+      return
+    }
+    console.log('Signup:', { name, email, password })
+  }
+
   return (
     <>
       <Aside>
         <Logo />
         <Title className="bold">{title}</Title>
 
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Item
             className='on-label'
             type='text'
             label='Name'
             placeholder='Enter your name'
             icon={mail}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
           <Item
             className='on-label'
@@ -38,6 +57,8 @@ const Signup = ({ title }: Props) => {
             label='Email Address'
             placeholder='Enter your email address'
             icon={mail}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Item
             className='on-label'
@@ -45,6 +66,8 @@ const Signup = ({ title }: Props) => {
             label='Password'
             placeholder='Enter your Password'
             icon={lock}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <Item
             className="off-label"
@@ -52,6 +75,8 @@ const Signup = ({ title }: Props) => {
             label='Password'
             placeholder='Repeat you password'
             icon={lock}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </Form>
 
@@ -61,6 +86,7 @@ const Signup = ({ title }: Props) => {
             mode="button"
             type="button"
             variant="fill"
+            onClick={handleSubmit}
           >
             Sign Up
           </Button>
@@ -70,6 +96,7 @@ const Signup = ({ title }: Props) => {
             mode="button"
             type="submit"
             variant="outline"
+            onClick={() => navigate('/login')}
           >
             Login Now
           </Button>

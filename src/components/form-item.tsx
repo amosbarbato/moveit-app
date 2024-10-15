@@ -8,6 +8,8 @@ type Props = {
   placeholder: string
   icon: string
   type: 'password' | 'text'
+  value: string
+  onChange: (e) => void
 }
 
 const Container = styled.div`
@@ -28,13 +30,18 @@ const Input = styled.input`
   &::placeholder { opacity: 0.6; }
 `
 
-export const Item = ({ className, label, placeholder, icon, type }: Props) => {
+export const Item = ({ className, label, placeholder, icon, type, value, onChange }: Props) => {
   return (
     <Container>
       <Label className={className}>{label}</Label>
 
       <div>
-        <Input placeholder={placeholder} type={type} />
+        <Input
+          placeholder={placeholder}
+          type={type}
+          value={value}
+          onChange={onChange}
+        />
         <Button
           mode="tag"
           className="semibold"

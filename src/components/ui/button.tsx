@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { FormEvent, ReactNode } from "react"
 import styled from "styled-components"
 import { color } from "../../global"
 
@@ -8,7 +8,7 @@ export type Props = {
   type: 'button' | 'submit'
   className: string
   variant?: 'outline' | 'fill'
-  onClick?: () => void
+  onClick?: (e: FormEvent) => void
 }
 
 const Container = styled.button<Props>`
