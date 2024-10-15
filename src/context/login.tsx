@@ -26,12 +26,14 @@ const Login = ({ title }: Props) => {
 
         <Form>
           <Item
+            className="on-label"
             type='text'
             label='Email Address'
             placeholder='Enter your email address'
             icon={mail}
           />
           <Item
+            className="on-label"
             type='password'
             label='Password'
             placeholder='Enter your Password'

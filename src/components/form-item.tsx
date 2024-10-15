@@ -3,6 +3,7 @@ import { color } from "../global"
 import { Button } from "./ui/button"
 
 type Props = {
+  className: string
   label: string
   placeholder: string
   icon: string
@@ -15,7 +16,8 @@ const Container = styled.div`
   > div { display: flex; align-items: center; }
 `
 const Label = styled.label`
-  display: block; font-size: 13px; color: ${color.dark};
+  display: block;
+  font-size: 13px; color: ${color.dark};
 `
 const Input = styled.input`
   flex: 1; height: 38px; font-size: 14px; padding-inline: 16px;
@@ -26,10 +28,10 @@ const Input = styled.input`
   &::placeholder { opacity: 0.6; }
 `
 
-export const Item = ({ label, placeholder, icon, type }: Props) => {
+export const Item = ({ className, label, placeholder, icon, type }: Props) => {
   return (
     <Container>
-      <Label>{label}</Label>
+      <Label className={className}>{label}</Label>
 
       <div>
         <Input placeholder={placeholder} type={type} />

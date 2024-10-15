@@ -26,21 +26,31 @@ const Signup = ({ title }: Props) => {
 
         <Form>
           <Item
+            className='on-label'
             type='text'
             label='Name'
             placeholder='Enter your name'
             icon={mail}
           />
           <Item
+            className='on-label'
             type='text'
             label='Email Address'
             placeholder='Enter your email address'
             icon={mail}
           />
           <Item
+            className='on-label'
             type='password'
             label='Password'
             placeholder='Enter your Password'
+            icon={lock}
+          />
+          <Item
+            className="off-label"
+            type='password'
+            label='Password'
+            placeholder='Repeat you password'
             icon={lock}
           />
         </Form>

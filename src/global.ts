@@ -30,6 +30,9 @@ const Global = createGlobalStyle`
   .bold {
     font-weight: 700;
   }
+
+  .off-label { display: none; }
+  .on-label { display: block }
 `
 
 export default Global
