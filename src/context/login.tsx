@@ -46,7 +46,7 @@ const Login = ({ title }: Props) => {
       await login(email, password)
       setSuccess('Login successful!')
       setError(null)
-      // navigate('/user', { state: { user: userData } })
+
       // console.log('Login successful!', { email, password });
     } catch (error) {
       setError('Login failed! Check your credentials.')
@@ -62,6 +62,7 @@ const Login = ({ title }: Props) => {
       <Aside>
         {error && <Alert message={error} type="error" onClose={handleCloseAlert} />}
         {success && <Alert message={success} type="success" onClose={handleCloseAlert} />}
+
         <Logo />
         <Title className="bold">{title}</Title>
 

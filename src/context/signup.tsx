@@ -58,9 +58,11 @@ const Signup = ({ title }: Props) => {
       await signup(name, email, password)
       setSuccess('Signup successful!')
       setError(null)
+
       // console.log('Signup successful!', { name, email, password })
     } catch (error) {
       setError('Signup failed!')
+
       // console.log('Signup failed!')
     }
   }
@@ -75,6 +77,7 @@ const Signup = ({ title }: Props) => {
       <Aside>
         {error && <Alert message={error} type="error" onClose={handleCloseAlert} />}
         {success && <Alert message={success} type="success" onClose={handleCloseAlert} />}
+
         <Logo />
         <Title className="bold">{title}</Title>
 
