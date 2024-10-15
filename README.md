@@ -28,7 +28,7 @@ This project is a simple Login and Sign Up app developed to demonstrate how to c
 <h3>Cloning</h3>
 
 ```bash
-git clone https://github.com/Fernanda-Kipper/login-page.git
+git clone https://github.com/amosbarbato/moveit-app.git
 ```
 > [Back-end](https://github.com/amosbarbato/moveit-auth-api)
 
