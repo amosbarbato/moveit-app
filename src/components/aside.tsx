@@ -10,6 +10,8 @@ const Container = styled.aside`
   flex-direction: column; align-items: center; justify-content: center;
   box-shadow: 0px 12px 50px 0px #0000001A;
 
+  @media(max-width: 1200px) { width: 100% }
+
   > div { width: 100%; }
 `
 

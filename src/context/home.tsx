@@ -17,7 +17,7 @@ const Home = () => {
     <main>
       <Aside>
         <Logo />
-        <Title className="bold">Olá, bem vindo!</Title>
+        <Title className="bold">Welcome!</Title>
 
         <Actions className="space-in-top">
           <Button

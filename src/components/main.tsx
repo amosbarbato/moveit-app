@@ -5,6 +5,8 @@ const Container = styled.div`
   width: 70%; display: flex; flex-direction: column; align-items: center;
   justify-content: center;
 
+  @media(max-width: 1200px) { display: none }
+
   > img { width: 400px }
 `
 const MainTitle = styled.h1`

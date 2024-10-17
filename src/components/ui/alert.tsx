@@ -15,12 +15,12 @@ const Container = styled.article<{ type: 'error' | 'success' }>`
   border-radius: 4px; font-size: 14px; color: white;
   background-color: ${(props) => (props.type === 'error' ? color.alert : color.success)};
 
+  @media(max-width: 1200px) { width: 94% }
+
   .close {
     position: absolute; right: 16px; top: 10px;
 
-    &:hover {
-      cursor: pointer;
-    }
+    &:hover { cursor: pointer }
   }
 `
 
