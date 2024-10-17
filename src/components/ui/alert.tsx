@@ -15,7 +15,7 @@ const Container = styled.article<{ type: 'error' | 'success' }>`
   border-radius: 4px; font-size: 14px; color: white;
   background-color: ${(props) => (props.type === 'error' ? color.alert : color.success)};
 
-  @media(max-width: 1200px) { width: 94% }
+  @media(max-width: 1200px) { width: auto; margin-inline: 12px }
 
   .close {
     position: absolute; right: 16px; top: 10px;
